@@ -1,21 +1,26 @@
 {
-  "name": "Tabnews",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "Wellington Braga",
-  "license": "MIT",
-  "packageManager": "pnpm@10.24.0",
-  "dependencies": {
-    "next": "13.5.9",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
-  }
+	"author": "Wellington Braga",
+	"dependencies": {
+		"next": "13.5.9",
+		"react": "18.3.1",
+		"react-dom": "18.3.1"
+	},
+	"description": "",
+	"devDependencies": {
+		"@biomejs/biome": "2.3.8"
+	},
+	"keywords": [],
+	"license": "MIT",
+	"main": "index.js",
+	"name": "wl3-tabnews",
+	"packageManager": "pnpm@10.24.0",
+	"scripts": {
+		"build": "next build",
+		"dev": "next dev",
+		"format": "biome format --write",
+		"lint": "biome lint --write",
+		"start": "next start",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"version": "1.0.0"
 }
