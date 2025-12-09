@@ -4,12 +4,25 @@
 pre-commit:
   parallel: true
   jobs:
-    - name: lint application
-      run: pnpm lint {staged_files}
-      glob: "*.{js,ts,jsx,tsx}"
+    - name: Check application
+      run: pnpm biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+      glob: "*.{js,ts,jsx,tsx,json,jsonc}"
       stage_fixed: true
 
-    - name: format application
-      run: pnpm format {staged_files}
-      glob: "*.{js,ts,jsx,tsx}"
-      stage_fixed: true
+# Build commit messages
+prepare-commit-msg:
+  commands:
+    commitzen:
+      skip:
+        - "merge"
+        - "rebase"
+      interactive: true
+      run: pnpm cz --hook # Or npx cz --hook
+      env:
+        LEFTHOOK: "0"
+
+# Validate commit messages
+commit-msg:
+  commands:
+    "lint commit message":
+      run: pnpm commitlint --edit {1}
